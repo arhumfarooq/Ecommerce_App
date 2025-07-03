@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_apis/components/bottom_navigation.dart';
-import 'package:practice_apis/views/cart.dart';
-import 'package:practice_apis/views/explore.dart';
-import 'package:practice_apis/views/home_screen.dart';
-import 'package:practice_apis/views/profile.dart';
+import 'package:practice_apis/views/screens/cart.dart';
+import 'package:practice_apis/views/screens/explore.dart';
+import 'package:practice_apis/views/screens/home_screen.dart';
+import 'package:practice_apis/views/screens/profile.dart';
 
 class HomeContent extends StatefulWidget {
   const HomeContent({super.key});

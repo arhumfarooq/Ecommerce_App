@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_apis/view_model/products_view_model.dart';
 
@@ -41,20 +42,39 @@ return ListView.builder(
                       ),
                       child: Column(
                         children: [
-                          Container(
-                            height: 200,
-                            width: 169,
-                          
-                            decoration: BoxDecoration(
+                     
 
-                              borderRadius: BorderRadius.circular(20),
-                             image: DecorationImage(
-                               image: NetworkImage(snapshot.data!.products![index].images![0] ?? ""),
-                               fit: BoxFit.cover,
-                             )
-                            ),
-                            
-                          ),
+// Inside your ListView.builder or wherever you're using the image:
+Container(
+  height: 200,
+  width: 169,
+  child: ClipRRect(
+    borderRadius: BorderRadius.circular(20),
+    child: Stack(
+      children: [
+        // 👇 SpinKit while image loads
+        const Center(
+          child: SpinKitFadingCircle(
+            color: Colors.black,
+            size: 50,
+          ),
+        ),
+
+        // 👇 Image with fade-in effect
+        Positioned.fill(
+          child: FadeInImage.assetNetwork(
+            placeholder: '', // leave empty since we're using SpinKit
+            image: snapshot.data!.products![index].images![0].isNotEmpty ? snapshot.data!.products![index].images![0] : '',
+            fit: BoxFit.cover,
+            imageErrorBuilder: (context, error, stackTrace) =>
+                const Center(child: Icon(Icons.broken_image)),
+          ),
+        ),
+      ],
+    ),
+  ),
+)
+,
                             Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(snapshot.data!.products![index].title ?? '',

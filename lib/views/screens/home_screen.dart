@@ -50,15 +50,16 @@
 //     );
 //   }
 // }
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:practice_apis/components/HS_container.dart';
-import 'package:practice_apis/components/bottom_navigation.dart';
+import 'package:practice_apis/components/homescreen_components/HS_container.dart';
+
 import 'package:practice_apis/view_model/products_view_model.dart';
-import 'package:practice_apis/views/cart.dart';
-import 'package:practice_apis/views/explore.dart';
-import 'package:practice_apis/views/profile.dart';
+import 'package:practice_apis/views/screens/cart.dart';
+import 'package:practice_apis/views/screens/explore.dart';
+import 'package:practice_apis/views/screens/profile.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -70,9 +71,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   ProductsViewModel productsViewModel = ProductsViewModel();
 
-  @override
-  Widget build(BuildContext context) {
-
+  
      int selectedIndex = 0;
 
   final List<Widget> screens = [
@@ -88,9 +87,15 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+  // Removed screenHeight and screenWidth initializers from here.
 
+
+
+  @override
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: Colors.white,

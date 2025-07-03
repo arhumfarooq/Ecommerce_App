@@ -143,8 +143,9 @@
 // }
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:practice_apis/widgets/resuable_container.dart';
+import 'package:practice_apis/components/homescreen_components/resuable_container.dart';
 import 'package:practice_apis/view_model/products_view_model.dart';
 
 class HsContainer extends StatelessWidget {
@@ -193,7 +194,9 @@ class HsContainer extends StatelessWidget {
                 future: productsViewModel.getallcategoryproducts("tablets"),
                 builder: (BuildContext context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(child: SpinKitCircle(
+                      color: Colors.black,size: 50,
+                    ));
                   } else if (snapshot.hasData) {
                     return ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -224,7 +227,10 @@ class HsContainer extends StatelessWidget {
                                   imageUrl: product.images![0] ?? "",
                                   fit: BoxFit.cover,
                                   placeholder: (context, url) =>
-                                      const Center(child: CircularProgressIndicator()),
+                                      Center(child: SpinKitCircle(
+                                        color: Colors.grey,
+                                        size: 50,
+                                      )),
                                   errorWidget: (context, url, error) =>
                                       const Icon(Icons.error),
                                 ),
