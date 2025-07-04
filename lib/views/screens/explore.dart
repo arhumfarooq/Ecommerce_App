@@ -4,14 +4,19 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_apis/components/explore/explore_addcart.dart';
 import 'package:practice_apis/components/explore/explore_descriptionconatiner.dart';
+import 'package:practice_apis/models/all_products.dart';
+import 'package:practice_apis/models/card_model.dart';
 import 'package:practice_apis/view_model/products_view_model.dart';
 import 'package:practice_apis/views/detailed_screen.dart';
 
 class Explore extends StatelessWidget {
-  const Explore({super.key});
+final CartItem1 cartItems;
+
+  const Explore({super.key, required this.cartItems,  });
 
   @override
   Widget build(BuildContext context) {
+ 
 ProductsViewModel productsViewModel = ProductsViewModel();
  final screenHeight = MediaQuery.of(context).size.height;
 
@@ -67,12 +72,12 @@ body: SafeArea(
 
               return InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) =>DetailedScreen(newimage:product.images[0] , newTitle: product.title,
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>DetailedScreen(newimage:product.images[0] , newTitle:  product.title,
                   
                    newCategory: product.category, newOverview:product.description ,
-                    newPrice: product.price.toString(), newAvailability:product.availabilityStatus)));
+                    newPrice: product.price.toString(), newAvailability:product.availabilityStatus, newCartItem1: cartItems,)));
                 },
-                child: ExploreDescriptionconatiner(title: product.title, category: product.category, price: product.price.toString(), images: product.images[0])
+                child: ExploreDescriptionconatiner(items: product,)
               );
               
               

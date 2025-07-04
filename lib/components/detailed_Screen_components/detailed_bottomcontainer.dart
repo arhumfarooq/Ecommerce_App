@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:practice_apis/components/detailed_Screen_components/detailed_addtocart.dart';
 import 'package:practice_apis/components/detailed_Screen_components/detailed_quantitty.dart';
+import 'package:practice_apis/models/card_model.dart';
 
 class DetailedBottomcontainer extends StatelessWidget {
-  const DetailedBottomcontainer({super.key});
+  final CartItem1 item;
+  const DetailedBottomcontainer({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.ci
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
        children: [
          DetailedQuantitty(),
-      DetailedAddtocart()
+      DetailedAddtocart(item1: item,)
        ],
      ),
   

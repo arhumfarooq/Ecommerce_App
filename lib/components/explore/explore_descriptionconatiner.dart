@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_apis/components/explore/explore_addcart.dart';
+import 'package:practice_apis/models/all_products.dart';
+import 'package:practice_apis/models/card_model.dart';
 
 class ExploreDescriptionconatiner extends StatelessWidget {
- final String title,category,price,images;
-  const ExploreDescriptionconatiner({super.key, required this.title, required this.category, required this.price, required this.images});
+ final Product items;
+  const ExploreDescriptionconatiner({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class ExploreDescriptionconatiner extends StatelessWidget {
                 margin: EdgeInsets.symmetric(vertical: 10),
                 width: double.infinity,
                 //color: Colors.black,
-                             
+                              
                 child: Row(
                   children: [
                     Container(
@@ -23,7 +25,7 @@ class ExploreDescriptionconatiner extends StatelessWidget {
                       ),
                       height: 120,
                       width: 120,
-                      child: Image.network(images)),
+                      child: Image.network(items.images.first ?? '')),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 25),
                   child: Container(
@@ -48,7 +50,7 @@ class ExploreDescriptionconatiner extends StatelessWidget {
                       
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(title,
+                        Text(items.title?? "",
                         overflow: TextOverflow.ellipsis,style: GoogleFonts.poppins(
                           color: Color(0xff5c524f),fontSize: 15,fontWeight: FontWeight.w700
                         ),
@@ -59,7 +61,7 @@ class ExploreDescriptionconatiner extends StatelessWidget {
                                 Text("Category :",style: GoogleFonts.roboto(
                                   fontSize: 13,fontWeight: FontWeight.w400,color: Color(0xff5c524f)
                                 ),),
-                                Text(category,style: GoogleFonts.poppins(
+                                Text(items.category??'',style: GoogleFonts.poppins(
                                   color: Color(0xff5c524f),fontSize: 10
                                 ),),
                                 SizedBox(width: 21,),
@@ -76,13 +78,14 @@ class ExploreDescriptionconatiner extends StatelessWidget {
                                       Text("Price :",style: GoogleFonts.roboto(
                                   fontSize: 13,fontWeight: FontWeight.w400,color: Color(0xff5c524f)
                                 ),),
-                               Text("\$"+"${price.toString()}",style: GoogleFonts.poppins(
+                               Text("\$"+"${items.price.toString()}",style: GoogleFonts.poppins(
                                 fontSize: 10,color: Color(0xff5c524f)
                                ),),
                                 ],
                               )
                            ,
-                                ExploreAddcart()
+                                ExploreAddcart(text: 'Add to card', item1: CartItem1( productId: items.id.toString(), productName: items.title, image:items.images.first,
+                                 productPrice: items.price.toString(),  ),)
                              ],)
                       ],
                      ),

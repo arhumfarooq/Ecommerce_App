@@ -54,6 +54,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_apis/components/homescreen_components/HS_container.dart';
+import 'package:practice_apis/models/card_model.dart';
 
 import 'package:practice_apis/view_model/products_view_model.dart';
 import 'package:practice_apis/views/screens/cart.dart';
@@ -62,30 +63,38 @@ import 'package:practice_apis/views/screens/profile.dart';
 
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+
+  const HomeScreen({super.key, });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
   ProductsViewModel productsViewModel = ProductsViewModel();
 
-  
+ 
      int selectedIndex = 0;
 
-  final List<Widget> screens = [
-    HomeScreen(),
-    Explore(),
-    Mycart(),
-    Profile(),
-  ];
+  // late List<Widget> screens;
 
-  void onTabChange(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   screens = [
+  //     HomeScreen(cartItems: widget.cartItems),
+  //     Explore(cartItems:  widget.cartItems,),
+  //     Mycart(cardProduct: widget.cartItems),
+  //     Profile(),
+  //   ];
+  // }
+
+  // void onTabChange(int index) {
+  //   setState(() {
+  //     selectedIndex = index;
+  //   });
+  // }
 
   // Removed screenHeight and screenWidth initializers from here.
 

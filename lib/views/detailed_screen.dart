@@ -5,11 +5,14 @@ import 'package:practice_apis/components/detailed_Screen_components/detailed_bot
 import 'package:practice_apis/components/detailed_Screen_components/detailed_imagecontainer.dart';
 import 'package:practice_apis/components/detailed_Screen_components/detailed_quantitty.dart';
 import 'package:practice_apis/components/detailed_Screen_components/detailes_component.dart';
+import 'package:practice_apis/models/card_model.dart';
+import 'package:practice_apis/widgets/app_icon.dart';
 import 'package:practice_apis/widgets/text.dart';
 
 class DetailedScreen extends StatelessWidget {
 final String newimage,newTitle,newCategory,newOverview,newPrice,newAvailability;
-  DetailedScreen({super.key, required this.newimage, required this.newTitle, required this.newCategory, required this.newOverview, required this.newPrice, required this.newAvailability});
+final CartItem1 newCartItem1;
+  DetailedScreen({super.key, required this.newimage, required this.newTitle, required this.newCategory, required this.newOverview, required this.newPrice, required this.newAvailability, required this.newCartItem1});
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +27,25 @@ body: Stack(
     DetailedImagecontainer(image: newimage)
       ],
     ),
+    Positioned(
+      left: 20,
+            top: 45, // Adjusted top for better spacing from status bar
+            right: 20,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+
+           AppIcon(icon: Icons.arrow_back,iconColor: Color(0XFF242424),backgroundColor: Colors.white,),
+                AppIcon(icon: Icons.shopping_cart_outlined,iconColor: Color(0XFF242424),backgroundColor: Colors.white,),
+      ],
+    )),
 Positioned(
   bottom: 0,
   child:DetailesComponent(title: newTitle, category: newCategory, overview: newOverview)
 ),
 Positioned(
   bottom: 0,
-  child: DetailedBottomcontainer()),
+  child: DetailedBottomcontainer(item: newCartItem1,)),
   Positioned(
    top: 730,
     child:      

@@ -134,6 +134,7 @@ class Profile extends StatelessWidget {
                     color: Colors.white,
                     border: Border.all(color:Color(0XFF242424) )
                   ),
+                  child: Image.asset('assets/man.png'),
                 ),
                 
                 Text("Your name",style: GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w400,color: Color(0XFF242424))),

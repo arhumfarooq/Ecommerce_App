@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:practice_apis/cart_controller.dart';
+import 'package:practice_apis/models/card_model.dart';
 import 'package:practice_apis/services/api_client.dart';
 import 'package:practice_apis/services/auth_repositry_api.dart';
 import 'package:practice_apis/utils/app_routes.dart';
 import 'package:practice_apis/views/Home_Content.dart';
+import 'package:practice_apis/views/screens/explore.dart';
+import 'package:practice_apis/views/screens/home_screen.dart';
 import 'package:practice_apis/views/screens/profile.dart';
 import 'package:practice_apis/views/screens/splash_Screen.dart';
 
 void main() {
   Get.put(ApiClient());
+  Get.put(CartController());
   Get.put(AuthRepositryApi());
+
   runApp(const MyApp());
 }
 
@@ -23,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       getPages: AppRoutes.getAppRoutes(),
-      home: SplashScreen (),
+      home: HomeScreen(),
     );
   }
 }
