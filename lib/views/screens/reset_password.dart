@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_apis/components/login_componenets/login_button.dart';
 import 'package:practice_apis/components/login_componenets/login_screen_components.dart';
+import 'package:practice_apis/utils/routes_name.dart';
 
 class ResetPassword extends StatelessWidget {
   const ResetPassword({super.key});
@@ -57,7 +60,11 @@ borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.ci
                    SizedBox(height: 20,),
                
                    SizedBox(height: 62,)
-,                     LoginButton(text: "Continue"),
+,                     GestureDetector(
+  onTap: () {
+    Get.toNamed(RoutesName.verifyotp);
+  },
+  child: LoginButton(text: "Continue")),
 SizedBox(height: 70,),
 
                   ],

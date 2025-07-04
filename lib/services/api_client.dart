@@ -1,17 +1,16 @@
+
+
+import 'dart:developer';
+
+import 'package:http/http.dart' as http;
+
 class ApiClient {
-  late String token;
-  final String appBaseUrl;
-  late Map<String, String> _mainheaders;
-  late Duration timeout;
+  Future<http.Response> post({
+    required String url,
+    Object?body,
 
-  ApiClient({required this.appBaseUrl}) {
-	baseUrl = appBaseUrl;
-	timeout = const Duration(seconds: 30);
-	_mainheaders = {
-	  "Content-Type": "application/json; charset==UTF-8",
-	  "Authorization": "Bearer $token",
-	};
+  })async{
+
+    return await http.post(Uri.parse(url),body: body);
   }
-
-  
 }

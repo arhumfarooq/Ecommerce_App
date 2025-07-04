@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:practice_apis/components/explore/explore_addcart.dart';
 import 'package:practice_apis/components/explore/explore_descriptionconatiner.dart';
@@ -51,6 +52,11 @@ body: SafeArea(
                 future: productsViewModel.fetchallroducts(),
                 
                  builder: (BuildContext context , snapshot){
+                       if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: SpinKitFadingCircle(
+                      color: Colors.black,size: 50,
+                    ));
+                  } 
               final products= snapshot.data!.products!;
               return ListView.builder(
               

@@ -102,8 +102,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         centerTitle: true,
-        title: Text("Welcome To Our Store",style: GoogleFonts.poppins(
-        color: Color(0xff5c524f)
+        title: Text("Welcome to Shoppiko",style: GoogleFonts.poppins(
+        color: Color(0XFF242424),
+        shadows: [
+                    Shadow(
+                      color: Colors.black26,
+                      offset: Offset(2, 2),
+                      blurRadius: 4,
+                    ),
+                  ],
       ),),backgroundColor: Colors.white,),
       body: SafeArea(child: HsContainer()),
    

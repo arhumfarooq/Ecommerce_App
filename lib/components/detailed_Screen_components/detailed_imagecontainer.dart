@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:practice_apis/widgets/data/app_exception.dart';
 
 class DetailedImagecontainer extends StatelessWidget {
   final String image;
@@ -12,6 +14,7 @@ class DetailedImagecontainer extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: 20),
         height: screenHeight/2.5,
         width: screenWidth,
+        
         decoration: BoxDecoration(
           boxShadow: [
         BoxShadow(
@@ -23,7 +26,27 @@ class DetailedImagecontainer extends StatelessWidget {
         )
         
           ],
-          image: DecorationImage(image: NetworkImage(image), fit: BoxFit.cover)
+          
+       
+        ),
+        child: ClipRRect(
+child: Image.network(
+  image,
+  fit: BoxFit.cover,
+  loadingBuilder: (context, child, loadingProgress) {
+    if (loadingProgress == null) return child;
+    return Center(child: SpinKitFadingCircle());
+  },
+  errorBuilder: (context,error,StackTrace){
+return Center(
+  child: throw ServerException("Internal server error"),
+);
+
+  },
+)
+
+,
+
         ),
           );
   }

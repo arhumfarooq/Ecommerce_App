@@ -17,7 +17,7 @@ class NavigationContainer extends StatelessWidget {
       child: Container(
         height: 60,
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Color(0XFF242424),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(

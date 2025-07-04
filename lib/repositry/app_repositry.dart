@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
+import 'package:practice_apis/controller/login_controller.dart';
 import 'package:practice_apis/models/all_products.dart';
 import 'package:practice_apis/models/cateogires_model.dart';
+import 'package:practice_apis/models/login_model.dart';
 import 'package:practice_apis/services/api_endpoints.dart';
 
 class AppRepositry {
@@ -34,10 +36,6 @@ if (response.statusCode==200) {
 throw Exception("Error fetching category products");
 
 }
-
-
-
-
 
 
 

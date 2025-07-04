@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:practice_apis/components/bottom_navigation.dart';
+import 'package:get/get.dart';
+import 'package:practice_apis/services/api_client.dart';
+import 'package:practice_apis/services/auth_repositry_api.dart';
+import 'package:practice_apis/utils/app_routes.dart';
 import 'package:practice_apis/views/Home_Content.dart';
-import 'package:practice_apis/views/detailed_screen.dart';
-import 'package:practice_apis/views/screens/home_screen.dart';
-import 'package:practice_apis/views/screens/login_screen.dart';
-import 'package:practice_apis/views/screens/reset_password.dart';
-import 'package:practice_apis/views/screens/signup_screen.dart';
+import 'package:practice_apis/views/screens/profile.dart';
 import 'package:practice_apis/views/screens/splash_Screen.dart';
-import 'package:practice_apis/views/screens/verify_otp.dart';
 
 void main() {
+  Get.put(ApiClient());
+  Get.put(AuthRepositryApi());
   runApp(const MyApp());
 }
 
@@ -23,7 +22,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: VerifyOtp (),
+      getPages: AppRoutes.getAppRoutes(),
+      home: SplashScreen (),
     );
   }
 }
